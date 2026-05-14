@@ -40,6 +40,17 @@ namespace HabitFlow.API.Controllers
             };
 
             _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+
+            var profile = new Profile
+            {
+                UserId = user.Id,
+                DisplayName = dto.Username,
+                Bio = "",
+                AvatarUrl = "",
+                CreatedAt = DateTime.UtcNow
+            };
+            _context.Profiles.Add(profile);
 
             await _context.SaveChangesAsync();
             return Ok("Регистрация успешна");
@@ -83,5 +94,8 @@ namespace HabitFlow.API.Controllers
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
+
+
     }
 }

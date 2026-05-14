@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System;
+using Microsoft.EntityFrameworkCore;
 namespace HabitFlow.API.Models
 {
     public class User
@@ -8,5 +9,7 @@ namespace HabitFlow.API.Models
         public string Username { get; set; }
         public string PasswordHash { get; set; }
         public DateTime CreatedAt { get; set; }
+        public Profile Profile { get; set; }
+        
     }
 }
